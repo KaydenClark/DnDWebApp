@@ -1,0 +1,13 @@
+*
+
+!.gitignore
+!README.md
+!Start DnD WebApp.bat
+!start-dev.bat
+!start-dev.ps1
+
+!Archive/
+!Archive/*.md
+
+!DM Workbook/
+!DM Workbook/**
