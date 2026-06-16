@@ -11,3 +11,6 @@
 
 !DM Workbook/
 !DM Workbook/**
+
+# Re-ignore macOS junk even inside allowed folders
+.DS_Store

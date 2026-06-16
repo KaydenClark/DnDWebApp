@@ -91,6 +91,18 @@ Test-RequiredPath -Path $clientPath -Name 'Client project'
 Test-RequiredPath -Path (Join-Path $apiPath 'package.json') -Name 'API package.json'
 Test-RequiredPath -Path (Join-Path $clientPath 'package.json') -Name 'Client package.json'
 
+# Detect local network IP and write it into .env BEFORE starting the client,
+# so Vite bakes the correct API URL in at build time (phones can't reach localhost:5000)
+$networkIp = (Get-NetIPAddress -AddressFamily IPv4 |
+    Where-Object { $_.InterfaceAlias -notmatch 'Loopback' -and $_.IPAddress -notmatch '^169' } |
+    Select-Object -First 1).IPAddress
+
+if ($networkIp) {
+    $envFile = Join-Path $clientPath '.env'
+    Set-Content -Path $envFile -Value "VITE_API_BASE_URL=http://${networkIp}:5000" -Encoding UTF8
+    Write-Host "Set VITE_API_BASE_URL to http://${networkIp}:5000"
+}
+
 if (Test-TcpPort -HostName '127.0.0.1' -Port 5000) {
     Write-Host 'API already appears to be running on port 5000.'
 }
@@ -104,7 +116,7 @@ if (Test-TcpPort -HostName '127.0.0.1' -Port 5173) {
 }
 else {
     Write-Host 'Starting client on port 5173...'
-    Start-DevWindow -Title 'DnD Client' -WorkingDirectory $clientPath -Command 'npm.cmd run dev -- --host 127.0.0.1 --port 5173 --strictPort'
+    Start-DevWindow -Title 'DnD Client' -WorkingDirectory $clientPath -Command 'npm.cmd run dev -- --host --port 5173 --strictPort'
 }
 
 Wait-ForPort -Name 'API' -Port 5000 | Out-Null
@@ -113,6 +125,13 @@ Wait-ForPort -Name 'Client' -Port 5173 | Out-Null
 if (-not $NoOpen) {
     Write-Host "Opening $clientUrl ..."
     Start-Process $clientUrl
+}
+
+if ($networkIp) {
+    Write-Host ""
+    Write-Host "Phone / tablet access (must be on same Wi-Fi):"
+    Write-Host "  http://${networkIp}:5173" -ForegroundColor Cyan
+    Write-Host ""
 }
 
 Write-Host 'Done. Close the API and client terminal windows when you want to stop the app.'
