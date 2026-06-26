@@ -1,0 +1,123 @@
+# DnDWebApp - Roadmap
+
+**Current phase:** root workbench harness active  
+**Owner:** Kayden plus the active agent
+
+This is the active root workspace plan. Keep it forward-looking and
+proof-oriented. Do not use it as a dumping ground for old session history.
+
+## Current State
+
+DnDWebApp is a split workspace with a root coordination repo plus nested backend
+and frontend repos. The backend (`dndAPI/`) is an Express/MongoDB API with a
+rules derivation engine. The frontend (`dndclient/`) is a React/Vite character
+sheet client. `DM Workbook/MASTER_ARCHITECTURE_V2.md`, nested Gameplan files,
+and nested harness docs remain useful references for implementation details.
+
+Important drift or uncertainty:
+
+- Root `.gitignore` historically ignored root harness docs; the workbench
+  rollout added explicit exceptions so the four-file harness can be committed.
+- Existing Gameplan files remain historical/project-specific references. Use
+  this `ROADMAP.md` as the active root plan.
+- Nested repo baselines in README/Gameplan files may be stale; verify live tests
+  before starting feature work.
+- Backend tests may depend on `mongodb-memory-server` being able to download a
+  MongoDB binary on first run.
+
+## Current Goal
+
+Keep the split DnDWebApp workspace documented, verifiable, and ready for scoped
+backend, frontend, or workbook work.
+
+Done when:
+
+- root docs explain repo boundaries and verification commands;
+- nested backend/client docs remain the authority for nested code changes;
+- every durable root project state change has a Verification Log row;
+- root commits contain only intentional root rollout or coordination changes.
+
+## Next Tasks
+
+Work top to bottom. Tick a box only once its proof exists.
+
+- [x] **Install root workbench harness** - add project-specific `AGENTS.md`,
+  `BLUEPRINT.md`, `ROADMAP.md`, and `RUNBOOK.md`. Proof: see Verification Log.
+- [ ] **Confirm backend baseline** - run `cd dndAPI && npm test` before backend
+  feature work. Proof: append test result here or in `dndAPI/GAME_PLAN.md`.
+- [ ] **Confirm frontend baseline** - run `cd dndclient && npm test && npm run
+  build` before frontend feature work. Proof: append test/build result here or
+  in `dndclient/GAME_PLAN.md`.
+- [ ] **Design feat/ASI rules** - write the backend design answers required by
+  `dndAPI/GAME_PLAN.md` before implementing Phase 6D. Proof: design doc linked
+  from backend plan.
+- [ ] **Manual browser verification** - with API and client running, sign in,
+  create characters covering Warlock and Paladin spell-slot cases, use session
+  tools, level up, and verify account isolation. Proof: named manual check row.
+
+## Blocked Or Deferred
+
+Do not start these until their prerequisite is met.
+
+| Item | Blocked on | Why it matters |
+|---|---|---|
+| Feat/ASI implementation | Written backend design for ASI timing, feat prerequisites, ability-score mutation, and tool/language choice model | Avoids encoding unstable D&D progression rules into API/client behavior. |
+| Production CORS configuration | Deployment target decision | `CORS_ORIGIN` must be explicit outside local defaults. |
+| DM Workbook app implementation | Explicit task selecting product shape and persistence | Workbook planning is not the same product as the player character sheet. |
+
+## Backlog
+
+- Add a concise root README note pointing to the new harness docs if onboarding
+  friction shows up.
+- Retire or archive old Gameplan routes only after confirming they are fully
+  superseded by `ROADMAP.md` and nested project plans.
+- Fix `SessionReadyTools.red.test.js` React `act(...)` warnings during the next
+  frontend test-maintenance pass.
+- Rename `dndclient/src/pages/equpiment/` to `equipment/` when already editing
+  that area.
+
+## Release Checks
+
+Verification commands live in `RUNBOOK.md` -> Test And Build. Do not duplicate
+every command here.
+
+Project-specific checkpoint checks:
+
+- root harness files exist: `AGENTS.md`, `BLUEPRINT.md`, `ROADMAP.md`,
+  `RUNBOOK.md`;
+- unresolved template placeholders are absent from root harness docs;
+- active root routing points to `ROADMAP.md`, not old root Gameplan naming;
+- `git diff --check` passes before commit;
+- nested repo statuses are checked when nested work is in scope;
+- no `.env`, local database, vendored compendium, dependency folder, build
+  output, or unrelated nested-repo change is staged.
+
+## Documentation Check
+
+Documentation is part of done. When a task changes durable project state, update
+the docs that describe that state before appending the verification row.
+
+Check these docs before marking work complete:
+
+| If the task changed... | Update or confirm |
+|---|---|
+| Root repo boundaries, architecture, safety rules, authority | `AGENTS.md`, `BLUEPRINT.md` |
+| Active root plan, blockers, proof | `ROADMAP.md` |
+| Setup, run, test, seed, git, recovery | `RUNBOOK.md` |
+| User-facing setup | `README.md` |
+| Backend implementation | `dndAPI/AGENTS.md`, `dndAPI/BLUEPRINT.md`, `dndAPI/GAME_PLAN.md` |
+| Frontend implementation | `dndclient/AGENTS.md`, `dndclient/BLUEPRINT.md`, `dndclient/GAME_PLAN.md` |
+| DM Workbook planning | `DM Workbook/MASTER_ARCHITECTURE_V2.md` and active workbook plans |
+
+If no docs need edits, record `Docs checked; no update needed` in the final
+response and, for durable state changes, in the Verification Log remaining-gap
+field.
+
+## Verification Log
+
+Append a row when a task changes durable project state. Use actual results, not
+stale claims.
+
+| Date | Task | Proof | Result | Remaining gap |
+|---|---|---|---|---|
+| 2026-06-26 | Install root workbench v1 harness | four file-existence checks; unresolved placeholder search; active Gameplan route search; `git diff --check`; `git status -sb --untracked-files=all` | pass: root harness docs added, `.gitignore` unignores them, placeholder search returned no unresolved template markers, Gameplan matches are historical/nested references only, diff whitespace check passed | Nested backend/frontend test suites were not run because this rollout changed root docs and `.gitignore` only. |

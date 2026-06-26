@@ -1,6 +1,10 @@
 *
 
 !.gitignore
+!AGENTS.md
+!BLUEPRINT.md
+!ROADMAP.md
+!RUNBOOK.md
 !README.md
 !Start DnD WebApp.bat
 !start-dev.bat
