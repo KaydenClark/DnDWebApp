@@ -1,10 +1,23 @@
 *
 
 !.gitignore
+!AGENTS.md
+!BLUEPRINT.md
+!ROADMAP.md
+!RUNBOOK.md
+!CLAUDE.md
 !README.md
 !Start DnD WebApp.bat
 !start-dev.bat
 !start-dev.ps1
+
+!benchmarks/
+!benchmarks/README.md
+
+!team templates/
+!team templates/MANAGER.md
+!team templates/SUBAGENT.md
+!team templates/TASKBOARD.md
 
 !Archive/
 !Archive/*.md

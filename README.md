@@ -5,6 +5,15 @@ This workspace contains the revived split app:
 - `dndclient`: Vite + React frontend
 - `dndAPI`: Express + MongoDB backend
 
+Project coordination docs are plain Markdown so Codex, Claude, Claude Code, and
+other agents can use the same source of truth. Claude Code should load
+`CLAUDE.md`, which imports `@AGENTS.md`; after `/init`, keep shared rules in
+`AGENTS.md` rather than duplicating them in agent-specific files.
+
+Visual-design starters live in `VISUAL_DESIGN.md`. Use them as
+project-specific direction for D&D UI work, not as a replacement for existing
+screens, user context, accessibility checks, or concrete browser verification.
+
 ## Run Locally
 
 ### One-click launcher
