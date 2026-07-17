@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "repositories": [
+    {
+      "id": "DnDWebApp",
+      "workingTree": ".",
+      "sourceRemote": {
+        "name": "origin",
+        "url": "https://github.com/KaydenClark/DnDWebApp.git"
+      },
+      "sourceRef": "refs/heads/Workbench-v2-Update",
+      "head": "db18330a0d7a9002ce8a49ded32b9b0628956d13",
+      "historyCount": 4,
+      "importDestination": ".",
+      "verificationCommand": "node tools/verify-repository-provenance.mjs --manifest consolidation/repository-provenance.json"
+    },
+    {
+      "id": "dndAPI",
+      "workingTree": "dndAPI",
+      "sourceRemote": {
+        "name": "origin",
+        "url": "https://github.com/KaydenClark/dndAPI.git"
+      },
+      "sourceRef": "refs/heads/master",
+      "head": "874957998a0db1c84a0c94b54048b033c914f875",
+      "historyCount": 56,
+      "importDestination": "dndAPI/",
+      "verificationCommand": "node tools/verify-repository-provenance.mjs --manifest consolidation/repository-provenance.json"
+    },
+    {
+      "id": "dndclient",
+      "workingTree": "dndclient",
+      "sourceRemote": {
+        "name": "origin",
+        "url": "https://github.com/KaydenClark/dndclient.git"
+      },
+      "sourceRef": "refs/heads/master",
+      "head": "6c75778c73cddcb2b5b8175be96ece8af261e40b",
+      "historyCount": 50,
+      "importDestination": "dndclient/",
+      "verificationCommand": "node tools/verify-repository-provenance.mjs --manifest consolidation/repository-provenance.json"
+    }
+  ]
+}

@@ -34,6 +34,29 @@ Expected owner remotes:
 - `https://github.com/KaydenClark/dndAPI.git`
 - `https://github.com/KaydenClark/dndclient.git`
 
+## Repository Provenance
+
+`consolidation/repository-provenance.json` pins the immutable remote URL,
+source ref, head, history count, and intended import destination for all three
+repositories. Verify the local objects and live remote refs without fetching or
+writing to any repository:
+
+```bash
+node tools/verify-repository-provenance.mjs \
+  --manifest consolidation/repository-provenance.json
+```
+
+The command fails closed on any mismatch. Its regression suite uses disposable
+synthetic repositories:
+
+```bash
+node --test tools/verify-repository-provenance.test.mjs
+```
+
+Update the manifest only through an assigned consolidation ticket with
+before/after status, head, and remote proof. A source-ref change is provenance
+drift, not an automatic update.
+
 ## Environment Configuration
 
 Create only local config from the nested examples when runtime work requires it:

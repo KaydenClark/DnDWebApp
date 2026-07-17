@@ -16,6 +16,12 @@
 !specs/
 !specs/**
 
+!consolidation/
+!consolidation/**
+
+!tools/
+!tools/**
+
 !benchmarks/
 !benchmarks/README.md
 
