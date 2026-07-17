@@ -1,5 +1,8 @@
 # DnDWebApp - Build Backlog
 
+> Archived during Workbench v2.3 adoption. Stable capability truth and open
+> work now live in the root stable specs; this file remains historical evidence.
+
 **Last updated: 2026-06-04 by Codex**
 
 Items spotted during Phase 1 and Phase 2 work that are not in the game plan yet. Review before starting Phase 3.

@@ -7,9 +7,14 @@
 !RUNBOOK.md
 !CLAUDE.md
 !README.md
+!LEXICON.md
+!TASKBOARD.md
 !Start DnD WebApp.bat
 !start-dev.bat
 !start-dev.ps1
+
+!specs/
+!specs/**
 
 !benchmarks/
 !benchmarks/README.md
@@ -21,6 +26,7 @@
 
 !Archive/
 !Archive/*.md
+!Archive/**
 
 !DM Workbook/
 !DM Workbook/**

@@ -1,71 +1,43 @@
-# DnD WebApp Workspace
+# DnDWebApp
 
-This workspace contains the revived split app:
+DnDWebApp is a private World Anvil-style campaign operating system for
+Azlemzyk. Campaign management is the product; the existing character creator
+and living character sheet are modules within it.
 
-- `dndclient`: Vite + React frontend
-- `dndAPI`: Express + MongoDB backend
+Current implementation is still split across three recoverable repositories:
 
-Project coordination docs are plain Markdown so Codex, Claude, Claude Code, and
-other agents can use the same source of truth. Claude Code should load
-`CLAUDE.md`, which imports `@AGENTS.md`; after `/init`, keep shared rules in
-`AGENTS.md` rather than duplicating them in agent-specific files.
+- this canonical owner repo: product controls, campaign material, launchers,
+  stable specs, and consolidation plan;
+- `KaydenClark/dndAPI`: Express/MongoDB auth, character persistence,
+  compendium, and server-side derivation;
+- `KaydenClark/dndclient`: React/Vite auth, roster, creation wizard, living
+  sheet, session tools, and progression UI.
 
-Visual-design starters live in `VISUAL_DESIGN.md`. Use them as
-project-specific direction for D&D UI work, not as a replacement for existing
-screens, user context, accessibility checks, or concrete browser verification.
+No repository has been deleted, retired, or history-rewritten.
 
-## Run Locally
+## Start Here
 
-### One-click launcher
+- `AGENTS.md` - operating rules and repository boundaries.
+- `BLUEPRINT.md` - product direction and complete capability-to-spec matrix.
+- `TASKBOARD.md` - generated hot work projection.
+- `RUNBOOK.md` - exact lifecycle, test, recovery, and Git commands.
+- `LEXICON.md` - shared campaign/product vocabulary.
 
-From this workspace root, either:
+The control surface is plain Markdown and is intended to work across Codex,
+Claude, and other repository-aware agents. In Claude Code, import the shared
+rules with `@AGENTS.md` (or run `/init` and keep the generated bridge thin).
 
-- Double-click `Start DnD WebApp.bat`
-- Or run `.\start-dev.bat`
+## Current Runtime
 
-The launcher starts the API on port `5000`, starts the frontend on port `5173`, and opens `http://localhost:5173`.
+The existing character modules run from the nested repos:
 
-Close the two server terminal windows when you want to stop the app.
+```bash
+cd dndAPI && npm run dev
+cd dndclient && npm run dev
+```
 
-If the API terminal closes or shows a MongoDB connection error, check `dndAPI/.env` and your network connection. The launcher can start the backend, but the backend still needs a valid MongoDB connection string.
+The API defaults to port 5000 and the client to 5173. See `RUNBOOK.md` for
+install, environment, tests, launchers, and safety boundaries.
 
-### Manual startup
-
-1. Create `dndAPI/.env` from `dndAPI/.env.example`
-2. Create `dndclient/.env` from `dndclient/.env.example`
-3. In `dndAPI`, run `npm install`
-4. In `dndclient`, run `npm install`
-5. Optional: populate `dndAPI/vendor/5etools-data` and leave `FIVETOOLS_DATA_DIR=./vendor/5etools-data` to import a larger local compendium
-6. In `dndAPI`, run `npm run seed` after your Atlas connection string is configured
-7. In `dndAPI`, run `npm run dev`
-8. In `dndclient`, run `npm run dev`
-
-## Seeded Starter Data
-
-`npm run seed` loads starter SRD-style data for:
-
-- `Races`
-- `Classes`
-- `Subclasses`
-- `Spells`
-- `Weapons`
-- `Armor`
-- `Features`
-- `Backgrounds`
-- `Feats`
-- `Conditions`
-- `Users`
-- `Character`
-
-If `FIVETOOLS_DATA_DIR` points to a valid local compendium source folder, the seed step imports compendium data from that local source instead of the small built-in starter set.
-
-Starter sign-in accounts use password `Password123!`:
-
-- `aria@example.com`
-- `bran@example.com`
-- `dm@example.com`
-
-## Default Local Ports
-
-- Frontend: `5173`
-- API: `5000`
+The campaign-management module is specified but not yet implemented. Do not
+describe the integrated campaign OS as shipped until its owning specs close.

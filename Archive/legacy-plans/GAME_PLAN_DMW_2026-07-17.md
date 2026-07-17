@@ -1,5 +1,8 @@
 # DM Workbook - Game Plan
 
+> Archived during Workbench v2.3 adoption after the campaign-management canon
+> and its full work decomposition were ported into root stable specs.
+
 **Last reviewed: 2026-05-28 by Claude**
 
 > This document covers the DM Workbook standalone app only.

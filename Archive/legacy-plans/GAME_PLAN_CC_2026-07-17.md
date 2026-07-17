@@ -1,5 +1,8 @@
 # DnDWebApp Character Creator - Game Plan
 
+> Archived during Workbench v2.3 adoption. Implemented character capabilities
+> and remaining progression work now live in root stable specs.
+
 **Last reviewed: 2026-06-04 by Codex (phase audit/docs pass)**
 
 > This document covers the DnDWebApp character creator only.

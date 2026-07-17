@@ -1,23 +1,7 @@
----
-doc_type: claude_bridge
-version: 2
-project_name: "DnDWebApp"
-status: active
-imports:
-  - AGENTS.md
----
+# Claude Bridge
 
-# DnDWebApp - Claude Instructions
+> Generated from LLM Workbench v2.3.
 
-@AGENTS.md
-
-Use this file only for Claude-specific workflow notes that cannot live in the
-shared `AGENTS.md`. Keep shared project rules in `AGENTS.md` so Codex, Claude,
-and other agents follow the same source of truth.
-
-## Claude-Specific Notes
-
-- Read `AGENTS.md` first, then the nearest nested project instructions before
-  editing `dndAPI/` or `dndclient/`.
-- Keep this bridge concise; larger project context belongs in `AGENTS.md`,
-  `BLUEPRINT.md`, `ROADMAP.md`, or `RUNBOOK.md`.
+Read and follow `AGENTS.md`. Product direction is in `BLUEPRINT.md`, shared
+terms are in `LEXICON.md`, executable work lives in the assigned stable spec,
+and commands are in `RUNBOOK.md`. This file adds no separate authority.

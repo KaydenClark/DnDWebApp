@@ -1,5 +1,8 @@
 # DnDWebApp Game Plan - SUPERSEDED
 
+> Archived during Workbench v2.3 adoption. Stable capability truth and open
+> work now live in the root stable specs; this file remains historical evidence.
+
 **Superseded: 2026-05-28**
 
 This file has been split into two focused documents:
