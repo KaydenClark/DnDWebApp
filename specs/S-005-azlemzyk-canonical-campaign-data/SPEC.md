@@ -61,9 +61,9 @@ private campaign canon must not leak into source control or synthetic demos.
 | Ticket | Slice | Status | Blockers | Proof |
 |---|---|---|---|---|
 | TK-001 | Inventory approved Azlemzyk sources and preview record counts/provenance without mutation | blocked | S-004 | pending |
-| TK-002 | Import core actor, faction, party, location, and lore records idempotently | ready | TK-001 | pending |
-| TK-003 | Import session, clue, encounter, currency, and timeline records with links | ready | TK-002 | pending |
-| TK-004 | Detect conflicts/stale links and produce an owner-review report without exposing raw data | ready | TK-003 | pending |
+| TK-002 | Import core actor, faction, party, location, and lore records idempotently | blocked | TK-001 | pending |
+| TK-003 | Import session, clue, encounter, currency, and timeline records with links | blocked | TK-002 | pending |
+| TK-004 | Detect conflicts/stale links and produce an owner-review report without exposing raw data | blocked | TK-003 | pending |
 
 ## Owner Gate
 
@@ -109,6 +109,7 @@ private campaign canon must not leak into source control or synthetic demos.
 |---|---|---|---|---|---|
 | 2026-07-17 | planning | Separated private canon ingestion from synthetic platform fixtures | Tracked plans/schema intent inspected; private DB/raw notes not read | S-005 created | Private-source work remains explicitly scoped and local |
 | 2026-07-17 | Planner remediation | Converted private-source scope into an explicit owner-blocked TK-001 gate with lifecycle-supported blockers and added all done/proof contracts | Owner-gate table, blocker syntax audit, render, and doctor checked; no private sources read | S-005 and Taskboard updated | S-004 and Kayden's exact path approval block TK-001 |
+| 2026-07-17 | Planner remediation | Propagated TK-001's owner-blocked state through dependent import tickets | Supported same-spec blocker chain checked; Taskboard rerendered and doctor passed | S-005 and Taskboard updated | Kayden's approved private-source paths remain the first actionable gate |
 
 ## Completion Result
 
