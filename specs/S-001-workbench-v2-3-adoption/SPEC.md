@@ -3,14 +3,14 @@
 > Generated from LLM Workbench v2.3.
 
 **Spec ID:** S-001
-**Status:** active
+**Status:** complete
 **Priority:** 0
 **Owner:** DnDWebApp Planner
 **Updated:** 2026-07-17
 **Catalog description:** Give the canonical owner a history-preserving v2.3 control surface, stable capability records, generated hot work, and reproducible recovery.
 **Blockers:** none
-**Latest event:** TK-001 closed with proof.
-**Next gate:** Confirm acceptance criteria and completion result.
+**Latest event:** Spec completed and removed from the hot board.
+**Next gate:** none
 
 ## Outcome
 
@@ -72,13 +72,13 @@ campaign platform and made durable planning impossible.
 
 ## Acceptance Criteria
 
-- [ ] All filled v2.3 controls exist with no required placeholders.
-- [ ] Blueprint identity and 27-item coverage matrix match settled canon/live source.
-- [ ] Sixteen cohesive stable specs own every matrix item.
-- [ ] Roadmap and combined Gameplans are archived, not active beside Taskboard.
-- [ ] API/client baselines and docs/lifecycle checks pass.
-- [ ] All three remotes/histories remain unchanged and recoverable.
-- [ ] Canonical-owner checkpoint is committed and pushed.
+- [x] All filled v2.3 controls exist with no required placeholders.
+- [x] Blueprint identity and 27-item coverage matrix match settled canon/live source.
+- [x] Sixteen cohesive stable specs own every matrix item.
+- [x] Roadmap and combined Gameplans are archived, not active beside Taskboard.
+- [x] API/client baselines and docs/lifecycle checks pass.
+- [x] All three remotes/histories remain unchanged and recoverable.
+- [x] Canonical-owner checkpoint is committed and pushed.
 
 ## Testing Seams
 
@@ -110,10 +110,14 @@ git diff --check
 |---|---|---|---|---|---|
 | 2026-07-17 | TK-001 | Adoption inventory and baseline captured | Three clean repos/remotes/heads inspected; API 132/132, client 372/372, client build green | v2 controls and retired plans classified | Render, doctor, commit, push, and recovery verification pending |
 | 2026-07-17 | TK-001 | Ticket closed | API 132/132; client 372/372; Vite build; Workbench evaluator 113/113; render/doctor; placeholder/stale-plan/file-set and git diff checks passed | Reconciled seven root controls, created sixteen stable specs, and archived five retired plan documents | Commit, push, and remote recovery verification remain before handoff |
+| 2026-07-17 | TK-001 | Canonical-owner recovery checkpoint published | `d460ae69353ced197fe3743c3d58c3bfe62f0c3b` exists at `origin/codex/s002-dndwebapp-canon-adoption`; nested heads/remotes remain unchanged | Runbook provenance records Workbench `cf6fd6e6c9aeaf655fc07b2f257539f9647188b0` | none |
+| 2026-07-17 | spec | Spec completed | Acceptance gates satisfied | Documentation impact recorded above | none |
 
 ## Completion Result
 
-Pending.
+DnDWebApp now has a remotely recoverable Workbench v2.3 control surface,
+complete canon-to-spec ownership, a generated hot Taskboard, archived competing
+plans, and unchanged nested implementation repositories.
 
 ## Remaining Limitations Or Follow-Up Specs
 

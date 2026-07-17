@@ -115,7 +115,7 @@ zero items are unjustifiably uncovered.**
 <!-- spec-catalog:start -->
 | Spec | Description | Status |
 |---|---|---|
-| [S-001 - Workbench v2.3 Adoption](specs/S-001-workbench-v2-3-adoption/SPEC.md) | Give the canonical owner a history-preserving v2.3 control surface, stable capability records, generated hot work, and reproducible recovery. | active |
+| [S-001 - Workbench v2.3 Adoption](specs/S-001-workbench-v2-3-adoption/SPEC.md) | Give the canonical owner a history-preserving v2.3 control surface, stable capability records, generated hot work, and reproducible recovery. | complete |
 | [S-002 - Campaign Operating System](specs/S-002-campaign-operating-system/SPEC.md) | Deliver one private World Anvil-style campaign workspace that unifies preparation, live-session operation, recall, and character modules. | planned |
 | [S-003 - History-Preserving Repository Consolidation](specs/S-003-history-preserving-repository-consolidation/SPEC.md) | Consolidate the product under DnDWebApp without losing, rewriting, deleting, or silently disconnecting the dndAPI and dndclient histories/remotes. | active |
 | [S-004 - Local Campaign App And Data Foundation](specs/S-004-local-campaign-app-data-foundation/SPEC.md) | Establish the private local campaign web runtime, SQLite schema/migrations, stable IDs, backup/recovery, and safe test fixtures. | planned |

@@ -206,7 +206,7 @@ keep their Git metadata and working trees out of the owner commit.
 | `KaydenClark/DnDWebApp` | `Workbench-v2-Update` | `db18330a0d7a9002ce8a49ded32b9b0628956d13` |
 | `KaydenClark/dndAPI` | `master` | `874957998a0db1c84a0c94b54048b033c914f875` |
 | `KaydenClark/dndclient` | `master` | `6c75778c73cddcb2b5b8175be96ece8af261e40b` |
-| Workbench protocol source | Workbench Factory live v2.3 checkout | record its exact commit in S-001 evidence at closeout |
+| Workbench protocol source | Workbench Factory live v2.3 checkout | `cf6fd6e6c9aeaf655fc07b2f257539f9647188b0` |
 
 No helper was vendored, so no vendored-helper checksum applies.
 
