@@ -9,8 +9,8 @@
 **Updated:** 2026-07-17
 **Catalog description:** Consolidate the product under DnDWebApp without losing, rewriting, deleting, or silently disconnecting the dndAPI and dndclient histories/remotes.
 **Blockers:** none
-**Latest event:** TK-001 implementation and full local verification are green at a reviewable checkpoint.
-**Next gate:** Push the checkpoint and run an exact-head Auditor review before closing TK-001.
+**Latest event:** TK-001 exact-head Auditor findings were remediated with focused red/green coverage and full verification.
+**Next gate:** Push the remediation checkpoint and rerun the exact-head Auditor before closing TK-001.
 
 ## Outcome
 
@@ -74,7 +74,7 @@ history or make the root remote falsely appear complete.
 
 | Ticket | Done criteria | Required proof |
 |---|---|---|
-| TK-001 | Manifest/verifier records and validates all three remote/ref/head/count tuples and performs no nested writes. | in-progress |
+| TK-001 | Manifest/verifier records and validates all three remote/ref/head/count tuples and performs no nested writes. | Red mismatch fixture, green live read-only run, and before/after nested status/head/remote bytes. |
 | TK-002 | Disposable rehearsal preserves both nested histories, documents conflicts, and rolls back without touching canonical repos. | Exact commands, resulting graph/rev counts, tree comparison, rollback trace, and clean canonical statuses. |
 | TK-003 | Integrated branch contains unambiguous API/client paths with all original commits reachable from named refs. | `git fsck`, rev reachability/counts, path/tree checks, and original-ref mapping. |
 | TK-004 | Integrated fresh clone passes app verification while all three original remotes/refs remain unchanged and no repo is retired. | Fresh-clone API/client tests/build, remote `ls-remote` comparison, recovery commands, and final provenance report. |
@@ -113,6 +113,7 @@ git ls-remote origin
 | 2026-07-17 | planning | Captured immutable pre-consolidation provenance | Three statuses, branches, logs, rev counts, remotes, and live `ls-remote` results inspected | S-003 and Runbook provenance created | TK-001 is the smallest safe Engineer ticket |
 | 2026-07-17 | Planner remediation | Normalized every open consolidation slice to explicit done criteria and required proof | Four ticket rows matched four done-contract rows; blocker syntax, render, and doctor checked | S-003 updated | TK-001 remains the smallest safe Engineer ticket |
 | 2026-07-17 | TK-001 checkpoint | Added the deterministic three-repository manifest, fail-closed read-only verifier, and synthetic mismatch regression | Red: verifier module missing; green: verifier tests 2/2, live manifest 3/3, before/after repository-state SHA-256 both `7f25fb132f7dfecc35e9f3da1f3b23a66e644f504fed41fd89f9f049e013f12c`; API 132/132; client 372/372; Vite build green | Runbook documents manifest, live verification, regression command, and provenance-drift rule | Exact-head Auditor review and ticket close remain |
+| 2026-07-17 | TK-001 Auditor remediation | Made symlinked CLI execution fail closed, required exact real Git roots, rejected duplicate/nested import destinations, used a locally reachable remote-mismatch fixture, cleaned fixtures with `t.after`, and restored the stable proof contract | Red: symlink, subdirectory, and duplicate-destination tests failed; green: verifier 6/6 and live manifest 3/3; reproducible before/after state SHA-256 both `09892db97065794ebacf40dcd580e9a58db9e6259300ddbdda0237b9c5c142c9`; API 132/132; client 372/372; Vite build green | Runbook records the reproducible evidence-hash command; S-003 required-proof contract restored | Exact-head re-audit and ticket close remain |
 
 ## Completion Result
 

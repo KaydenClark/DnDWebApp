@@ -53,6 +53,17 @@ synthetic repositories:
 node --test tools/verify-repository-provenance.test.mjs
 ```
 
+To prove the verifier did not change any repository, run this exact command
+immediately before and after the live verifier and compare the SHA-256 values:
+
+```bash
+for repo in . dndAPI dndclient; do
+  git -C "$repo" status --porcelain=v2 --branch
+  git -C "$repo" rev-parse HEAD
+  git -C "$repo" remote -v
+done | shasum -a 256
+```
+
 Update the manifest only through an assigned consolidation ticket with
 before/after status, head, and remote proof. A source-ref change is provenance
 drift, not an automatic update.

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { readFile } from "node:fs/promises";
+import { realpathSync } from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -48,6 +49,44 @@ function assertRelativePath(value, field, allowDot = false) {
     value.split(/[\\/]/u).includes("..")
   ) {
     throw new Error(`${field} must be a contained relative path`);
+  }
+}
+
+function normalizedImportDestination(value) {
+  const normalized = path.posix.normalize(value.replaceAll("\\", "/"));
+  return normalized.endsWith("/") && normalized !== "/"
+    ? normalized.slice(0, -1)
+    : normalized;
+}
+
+function assertNonOverlappingImportDestinations(repositories) {
+  const destinations = repositories.map((repository) => ({
+    id: repository.id,
+    path: normalizedImportDestination(repository.importDestination),
+  }));
+
+  for (let leftIndex = 0; leftIndex < destinations.length; leftIndex += 1) {
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < destinations.length;
+      rightIndex += 1
+    ) {
+      const left = destinations[leftIndex];
+      const right = destinations[rightIndex];
+      const duplicate = left.path === right.path;
+      // "." is the canonical owner shell, not an imported subtree.
+      const nested =
+        left.path !== "." &&
+        right.path !== "." &&
+        (left.path.startsWith(`${right.path}/`) ||
+          right.path.startsWith(`${left.path}/`));
+
+      if (duplicate || nested) {
+        throw new Error(
+          `import destinations overlap: ${left.id} (${left.path}) and ${right.id} (${right.path})`,
+        );
+      }
+    }
   }
 }
 
@@ -129,6 +168,8 @@ function validateManifest(manifest) {
       );
     }
   }
+
+  assertNonOverlappingImportDestinations(manifest.repositories);
 }
 
 function runGit(workingTree, args) {
@@ -148,11 +189,28 @@ function resolveWorkingTree(workspace, relativePath) {
   if (workingTree !== root && !workingTree.startsWith(`${root}${path.sep}`)) {
     throw new Error(`working tree escapes workspace: ${relativePath}`);
   }
-  return workingTree;
+  const canonicalRoot = realpathSync(root);
+  const canonicalWorkingTree = realpathSync(workingTree);
+  if (
+    canonicalWorkingTree !== canonicalRoot &&
+    !canonicalWorkingTree.startsWith(`${canonicalRoot}${path.sep}`)
+  ) {
+    throw new Error(`working tree escapes workspace: ${relativePath}`);
+  }
+  return canonicalWorkingTree;
 }
 
 function verifyRepository(repository, workspace) {
   const workingTree = resolveWorkingTree(workspace, repository.workingTree);
+  const gitTopLevel = realpathSync(
+    runGit(workingTree, ["rev-parse", "--show-toplevel"]),
+  );
+  if (gitTopLevel !== workingTree) {
+    throw new Error(
+      `manifest working tree ${workingTree} does not equal git top-level ${gitTopLevel}`,
+    );
+  }
+
   const actualRemoteUrl = runGit(workingTree, [
     "remote",
     "get-url",
@@ -242,8 +300,10 @@ async function main() {
 }
 
 const isEntrypoint =
-  process.argv[1] &&
-  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+  import.meta.main ||
+  (process.argv[1] &&
+    realpathSync(process.argv[1]) ===
+      realpathSync(fileURLToPath(import.meta.url)));
 
 if (isEntrypoint) {
   main().catch((error) => {
