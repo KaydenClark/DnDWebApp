@@ -60,8 +60,8 @@ Work top to bottom. Tick a box only once its proof exists.
 - [x] **Install root Workbench v2 harness** - add project-specific `AGENTS.md`,
   `BLUEPRINT.md`, `ROADMAP.md`, `RUNBOOK.md`, and `CLAUDE.md`. Proof: see
   Verification Log.
-- [ ] **Confirm backend baseline** - run `cd dndAPI && npm test` before backend
-  feature work. Proof: append test result here or in `dndAPI/GAME_PLAN.md`.
+- [x] **Confirm backend baseline** - `cd dndAPI && npm test` passed: 132 tests,
+  0 failures (2026-07-17). Proof: Verification Log.
 - [ ] **Confirm frontend baseline** - run `cd dndclient && npm test && npm run
   build` before frontend feature work. Proof: append test/build result here or
   in `dndclient/GAME_PLAN.md`.
@@ -142,3 +142,4 @@ stale claims.
 | Date | Task | Proof | Result | Remaining gap |
 |---|---|---|---|---|
 | 2026-07-01 | Install root Workbench v2 harness | `test -f AGENTS.md && test -f BLUEPRINT.md && test -f ROADMAP.md && test -f RUNBOOK.md && test -f CLAUDE.md`; unresolved placeholder search; active Gameplan route search; `git diff --check`; `node /Users/kayden/GPT_OS/workbench templates/tools/evaluate-workbench.mjs --path . --include-controls`; `git status -sb --untracked-files=all`; exit/result: pass; artifact/trace: n/a; coverage: root harness docs, gitignore exceptions, team templates, benchmark discipline, evaluator controls | pass: root harness docs, Claude bridge, team templates, and benchmark notes added from Workbench v2 structure; `.gitignore` unignores root harness docs; active root planning routes to `ROADMAP.md` | Nested backend/frontend test suites were not run because this rollout changed root docs and `.gitignore` only. |
+| 2026-07-17 | Confirm backend baseline | `cd dndAPI && npm test`; exit 0; 132 passed, 0 failed; duration 13.936s; coverage: backend API, data access, derivation, DB helpers, middleware, and validation tests | pass: baseline is green before backend feature work; no source, dependency, environment, or database changes made | Docs checked; no update needed beyond this required roadmap proof. Frontend baseline, background-grants integration test, manual spell-slot verification, and feat/ASI design remain. |
