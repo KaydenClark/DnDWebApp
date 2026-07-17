@@ -70,6 +70,16 @@ evidence, not test-count claims.
 | TK-004 | Add campaign navigation/search/link workflow when S-002/S-004 domains land | ready | S-002, S-004 | pending |
 | TK-005 | Produce desktop/tablet/mobile, console/network, recovery, and check-in release artifact | ready | TK-003, TK-004 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | One documented command starts isolated synthetic services/data, waits on health, runs a browser smoke, and shuts down cleanly. | Red startup failure test, green smoke trace, health timing, process cleanup, and no real-service/private-data assertion. |
+| TK-002 | Browser proves sign-up/in, protected routing, cross-user isolation, roster, creation, and sheet load. | Synthetic two-user E2E trace, inaccessible foreign-character assertion, screenshots, and console/network log. |
+| TK-003 | Browser proves Warlock/Paladin rules, all session tools, and level-up persistence across reload. | Named character fixture flows, before/after API/UI assertions, reload proof, screenshots, and full API/client suites. |
+| TK-004 | Once dependencies complete, browser proves persistent/two-click campaign navigation, record edit, FTS, and stable cross-domain links. | Dependency-state check, synthetic campaign E2E, two-click assertions, search/link fixtures, and screenshots. |
+| TK-005 | Target viewports pass without critical overflow; console/page/network failures fail the run; fresh clone produces a sanitized check-in artifact. | Viewport matrix, failure-injection tests, clean logs, fresh-clone command output, artifact privacy scan, and final report. |
+
 ## Acceptance Criteria
 
 - [ ] One documented command runs isolated browser proof.
@@ -102,6 +112,7 @@ cd ../dndclient && npm test -- --run && npm run build
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Converted manual release notes into a full browser-proof capability | Unit/build baselines and absence of E2E scripts/artifacts verified | S-016 and Runbook release boundary created | TK-001 is agent-safe; integrated campaign proof waits on its domain dependencies |
+| 2026-07-17 | Planner remediation | Added explicit done criteria and required proof to all browser/release slices | Five ticket rows matched five done-contract rows; blocker syntax, render, and doctor checked | S-016 updated | TK-001 remains agent-safe |
 
 ## Completion Result
 

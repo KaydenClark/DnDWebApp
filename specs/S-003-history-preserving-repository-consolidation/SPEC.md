@@ -72,13 +72,12 @@ history or make the root remote falsely appear complete.
 
 ## Ticket Done Contracts
 
-- **TK-001:** verifier fails on any unexpected remote/ref/head/count and performs
-  no writes to nested repos.
-- **TK-002:** disposable rehearsal documents exact commands, resulting graph,
-  conflicts, rollback, and byte/file checks.
-- **TK-003:** imported histories are reachable from explicit refs/tags and
-  product paths are unambiguous.
-- **TK-004:** all suites and fresh-clone recovery pass; no repository is retired.
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | Manifest/verifier records and validates all three remote/ref/head/count tuples and performs no nested writes. | Red mismatch fixture, green live read-only run, and before/after nested status/head/remote bytes. |
+| TK-002 | Disposable rehearsal preserves both nested histories, documents conflicts, and rolls back without touching canonical repos. | Exact commands, resulting graph/rev counts, tree comparison, rollback trace, and clean canonical statuses. |
+| TK-003 | Integrated branch contains unambiguous API/client paths with all original commits reachable from named refs. | `git fsck`, rev reachability/counts, path/tree checks, and original-ref mapping. |
+| TK-004 | Integrated fresh clone passes app verification while all three original remotes/refs remain unchanged and no repo is retired. | Fresh-clone API/client tests/build, remote `ls-remote` comparison, recovery commands, and final provenance report. |
 
 ## Acceptance Criteria
 
@@ -112,6 +111,7 @@ git ls-remote origin
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | planning | Captured immutable pre-consolidation provenance | Three statuses, branches, logs, rev counts, remotes, and live `ls-remote` results inspected | S-003 and Runbook provenance created | TK-001 is the smallest safe Engineer ticket |
+| 2026-07-17 | Planner remediation | Normalized every open consolidation slice to explicit done criteria and required proof | Four ticket rows matched four done-contract rows; blocker syntax, render, and doctor checked | S-003 updated | TK-001 remains the smallest safe Engineer ticket |
 
 ## Completion Result
 

@@ -63,6 +63,15 @@ stale generated summaries are misleading unless their provenance is visible.
 | TK-003 | Add validated targeted record and FTS query endpoints with limits and snippets | ready | TK-002 | pending |
 | TK-004 | Refresh affected contexts after writes and prove stale/unavailable degradation | ready | TK-003 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | Snapshot stays within documented size/record bounds and exposes source identity and generated-at freshness. | Fixed-clock synthetic snapshot test, bound assertions, source/freshness fields, and sanitized artifact. |
+| TK-002 | Actor/faction/session/party/location/villain contexts are domain-bounded and derived only from canonical records. | Per-domain fixture tests, byte/row bounds, provenance checks, and no-canonical-write assertion. |
+| TK-003 | Targeted lookup and FTS validate inputs, enforce result/snippet limits, and return accurate ranked results. | Positive/no-result/injection/limit/ranking tests against temporary SQLite fixtures. |
+| TK-004 | Relevant writes refresh/invalidate affected contexts while stale/unavailable sources remain explicit. | Fixed-clock mutation tests, invalidation matrix, stale/offline fixtures, and browser/API degradation trace. |
+
 ## Acceptance Criteria
 
 - [ ] Snapshot and domain contexts are bounded and provenance-bearing.
@@ -91,6 +100,7 @@ stale generated summaries are misleading unless their provenance is visible.
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Converted the three-tier retrieval contract into a durable product capability | Historical skill and planned schema compared with live tracked source | Lexicon and S-006 created | Runtime implementation remains |
+| 2026-07-17 | Planner remediation | Added explicit done criteria and required proof to every retrieval/context slice | Four ticket rows matched four done-contract rows; blocker syntax, render, and doctor checked | S-006 updated | Four implementation slices remain |
 
 ## Completion Result
 

@@ -65,6 +65,17 @@ current instead of scattered across notes.
 | TK-005 | Link factions to current NPC members through stable IDs and safe rename behavior | ready | TK-004 | pending |
 | TK-006 | Prove actor/faction workflow with Azlemzyk-shaped synthetic fixtures and responsive UI | ready | TK-003, TK-005 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | NPC CRUD persists all settled fields, validates status/required inputs, and shows active/empty/error states. | API/DB CRUD and validation tests, persist-reload check, and client state tests. |
+| TK-002 | NPC search/filter returns correct name/faction/status subsets with deterministic ordering. | Filter-combination fixtures, no-result/error tests, and responsive table screenshot. |
+| TK-003 | NPC archive previews link impact, preserves history, and never destructively deletes by default. | Linked-record fixture, impact-preview assertion, archive/reload test, and unchanged-history proof. |
+| TK-004 | Faction CRUD persists public/private motive, method, pressure, leverage, and escalation fields. | API/DB validation and persist-reload tests plus client edit-state proof. |
+| TK-005 | Faction membership uses stable IDs and remains correct across faction/NPC rename or archive. | Rename/archive relationship fixtures, orphan check, and rendered membership assertion. |
+| TK-006 | One synthetic responsive flow creates/links/filters/archives actors and exposes no private secrets in player projection. | Browser E2E, desktop/tablet screenshots, privacy scan, console/network log, and full suite. |
+
 ## Acceptance Criteria
 
 - [ ] NPC and faction fields match settled canon.
@@ -93,6 +104,7 @@ current instead of scattered across notes.
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Ported NPC Manager and Faction Tracker as one linked actor capability | Archived DMW plan/schema and retrieval contract inspected | S-007 created | All six slices remain |
+| 2026-07-17 | Planner remediation | Added explicit done criteria and required proof to all actor/faction slices | Six ticket rows matched six done-contract rows; blocker syntax, render, and doctor checked | S-007 updated | Six implementation slices remain |
 
 ## Completion Result
 

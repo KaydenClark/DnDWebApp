@@ -66,6 +66,16 @@ state would create irreversible drift.
 | TK-004 | Add local campaign client shell with explicit loading/empty/error states | ready | TK-003 | pending |
 | TK-005 | Add backup, restore, schema-health, and fresh-clone recovery proof | ready | TK-004 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | Local campaign API starts against a temporary SQLite DB and returns a bounded healthy response without cloud credentials. | Red startup/health test, green API test, temporary-DB path proof, and process shutdown trace. |
+| TK-002 | Versioned migrations create stable IDs/constraints transactionally and rerun without drift or partial writes. | Empty/upgrade/idempotency/rollback migration tests and schema dump comparison. |
+| TK-003 | Synthetic fixtures load deterministically with valid links and no private campaign content. | Count/link assertions, repeat-load idempotency, and private-content/secret scan. |
+| TK-004 | Local client shell handles loading, empty, success, and API/DB failure without crashing. | Component/browser state tests, console-error assertion, and desktop/tablet screenshots. |
+| TK-005 | Backup/restore and schema health reproduce the same validated records from a fresh clone. | Backup checksum/schema/count comparison, restore test, fresh-clone command log, and Runbook update. |
+
 ## Acceptance Criteria
 
 - [ ] Local runtime needs no paid/cloud dependency.
@@ -94,6 +104,7 @@ state would create irreversible drift.
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Ported the settled local app/data direction without fabricating a scaffold | Root tree, manifests, and archived campaign plan inspected | S-004 created | All five slices remain |
+| 2026-07-17 | Planner remediation | Added ticket-level done criteria and required proof for the complete foundation decomposition | Five ticket rows matched five done-contract rows; blocker syntax, render, and doctor checked | S-004 updated | All five slices remain |
 
 ## Completion Result
 

@@ -35,6 +35,8 @@ feel like one dependable tool.
 
 - Private landing/navigation covers campaign, session, world, and character
   modules without exposing campaign data publicly.
+- Campaign sections share a persistent left sidebar, highlight the active
+  section, and reach any active record in no more than two clicks.
 - Module boundaries use stable IDs and links instead of copied text.
 - Unavailable modules degrade honestly and preserve recoverable work.
 - Desktop and tablet layouts support preparation and at-table use.
@@ -61,15 +63,27 @@ feel like one dependable tool.
 
 | Ticket | Slice | Status | Blockers | Proof |
 |---|---|---|---|---|
-| TK-001 | Render the private campaign home with stable navigation and honest unavailable-module states | ready | S-003, S-004 | pending |
+| TK-001 | Render the private campaign home with persistent left-sidebar navigation, active state, two-click reach, and honest unavailable-module states | ready | S-003, S-004 | pending |
 | TK-002 | Link campaign entities and character modules through stable identities | ready | TK-001 | pending |
 | TK-003 | Add desktop/tablet preparation and at-table navigation states | ready | TK-002 | pending |
 | TK-004 | Surface module health, source, and freshness without leaking private data | ready | TK-003 | pending |
 | TK-005 | Prove the integrated shell with a synthetic under-one-minute campaign demo | ready | TK-004 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | Private home renders persistent sidebar links for every planned module, highlights the active section, reaches active records in at most two clicks, and shows honest unavailable states. | Route/navigation tests, two-click path assertions, desktop/tablet screenshots, and no-console-error trace. |
+| TK-002 | Campaign and character records cross-link through stable IDs without copied or ambiguous identity fields. | Contract tests for valid/missing/renamed IDs plus one synthetic cross-module navigation trace. |
+| TK-003 | Preparation and at-table navigation remain readable and operable at documented desktop/tablet widths. | Viewport E2E with overflow/action assertions and check-in screenshots. |
+| TK-004 | Every module health view exposes source/freshness and privacy-safe unavailable/error states. | Fixed-clock health tests, stale/unavailable fixtures, and private-field response scan. |
+| TK-005 | One synthetic demo traverses the integrated shell in under one minute with no private data or console/network failure. | Recorded one-command demo, sanitized artifact, console/network log, and full suite result. |
+
 ## Acceptance Criteria
 
 - [ ] One private shell reaches every specified campaign and character module.
+- [ ] Persistent sidebar navigation highlights the active section and reaches
+      any active record in no more than two clicks.
 - [ ] Navigation and cross-links preserve stable identities.
 - [ ] Missing/stale/error states are visible and recoverable.
 - [ ] Desktop and tablet layouts avoid overflow and keep primary actions usable.
@@ -95,6 +109,7 @@ feel like one dependable tool.
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Captured settled campaign OS identity and module boundaries | Current authorization compared with root/nested docs and live source | Blueprint, Lexicon, and S-002 created | All implementation slices remain |
+| 2026-07-17 | Planner remediation | Restored persistent left-sidebar, active-state, and two-click navigation ownership and added done/proof contracts for every open slice | Archived navigation canon, 27-row matrix, blocker audit, render, and doctor checked | S-002 and Blueprint updated | Five implementation slices remain |
 
 ## Completion Result
 

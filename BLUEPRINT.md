@@ -83,6 +83,7 @@ direction, not ticket state; executable status lives only in stable specs.
 |---|---|---|---|
 | Workbench v2.3 project lifecycle | v2 controls existed without stable specs, Lexicon, or generated Taskboard | implemented during adoption | S-001 |
 | Campaign-management platform / OS shell | Settled private World Anvil-style identity; no integrated surface yet | settled, not implemented | S-002 |
+| Persistent campaign navigation | Settled persistent left sidebar, active-section highlight, and no-more-than-two-click record access; no integrated surface yet | settled, not implemented | S-002 |
 | Non-destructive repository consolidation | Three clean independent histories/remotes; root currently ignores nested repos | settled, not implemented | S-003 |
 | Local campaign app/data foundation | Settled Express/React/SQLite direction in archived workbook plan; no app scaffold | settled, not implemented | S-004 |
 | Azlemzyk canonical data | Campaign domain/schema and seed intent documented; private live DB not read | settled, not implemented | S-005 |
@@ -90,6 +91,7 @@ direction, not ticket state; executable status lives only in stable specs.
 | NPC Manager | Fields, CRUD, active filtering, and Azlemzyk seed requirement settled | settled, not implemented | S-007 |
 | Faction Tracker | Fields, linked NPCs, pressure/leverage/escalation settled | settled, not implemented | S-007 |
 | Session Log + full-text search | Session record and FTS5 behavior settled | settled, not implemented | S-008 |
+| Session Log tags and recency order | Freeform tags and newest-session-first ordering are settled in archived campaign canon | settled, not implemented | S-008 |
 | Party Tracker | Party state, items, notes, and session use settled | settled, not implemented | S-008 |
 | Meta-Currency | Per-player Inspiration/Fate/Clarity immediate controls settled | settled, not implemented | S-008 |
 | Encounter Builder | Encounter, stat block, DC, environment, and notes fields settled | settled, not implemented | S-009 |
@@ -119,7 +121,7 @@ zero items are unjustifiably uncovered.**
 | [S-002 - Campaign Operating System](specs/S-002-campaign-operating-system/SPEC.md) | Deliver one private World Anvil-style campaign workspace that unifies preparation, live-session operation, recall, and character modules. | planned |
 | [S-003 - History-Preserving Repository Consolidation](specs/S-003-history-preserving-repository-consolidation/SPEC.md) | Consolidate the product under DnDWebApp without losing, rewriting, deleting, or silently disconnecting the dndAPI and dndclient histories/remotes. | active |
 | [S-004 - Local Campaign App And Data Foundation](specs/S-004-local-campaign-app-data-foundation/SPEC.md) | Establish the private local campaign web runtime, SQLite schema/migrations, stable IDs, backup/recovery, and safe test fixtures. | planned |
-| [S-005 - Azlemzyk Canonical Campaign Data](specs/S-005-azlemzyk-canonical-campaign-data/SPEC.md) | Import and maintain provenance-bearing Azlemzyk campaign records across the campaign schema without exposing private raw sources. | planned |
+| [S-005 - Azlemzyk Canonical Campaign Data](specs/S-005-azlemzyk-canonical-campaign-data/SPEC.md) | Import and maintain provenance-bearing Azlemzyk campaign records across the campaign schema without exposing private raw sources. | blocked |
 | [S-006 - Campaign Retrieval And Context](specs/S-006-campaign-retrieval-context/SPEC.md) | Provide bounded, provenance-bearing campaign summaries, domain context, and targeted search over canonical local records. | planned |
 | [S-007 - Campaign Actors And Factions](specs/S-007-campaign-actors-factions/SPEC.md) | Let Kayden manage NPC motives/status and faction pressure/leverage as linked living campaign records. | planned |
 | [S-008 - Session And Party Operations](specs/S-008-session-party-operations/SPEC.md) | Give Kayden a searchable Session Log, live Party Tracker, and immediate per-player meta-currency controls. | planned |

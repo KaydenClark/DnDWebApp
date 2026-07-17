@@ -30,8 +30,8 @@ remain searchable, and distinguish historical notes from current party state.
 
 ## Desired Behavior
 
-- Session Log stores session number/date/content and supports bounded FTS
-  snippets, ordering, and no-result states.
+- Session Log stores session number/in-world date/content/freeform tags, lists
+  newest sessions first, and supports bounded FTS snippets and no-result states.
 - Party Tracker stores member/class/status/notable items/notes and exposes a
   concise at-table view.
 - Meta-Currency tracks Inspiration, Fate, and Clarity per player with immediate
@@ -58,7 +58,7 @@ remain searchable, and distinguish historical notes from current party state.
 
 | Ticket | Slice | Status | Blockers | Proof |
 |---|---|---|---|---|
-| TK-001 | Create, edit, and list ordered Session Log records | ready | S-004, S-005 | pending |
+| TK-001 | Create, edit, tag, and list newest-first Session Log records | ready | S-004, S-005 | pending |
 | TK-002 | Add FTS5 session search with bounded snippets, ranking, and no-result state | ready | TK-001 | pending |
 | TK-003 | Refresh recent-session context after writes and prove source/freshness | ready | TK-002 | pending |
 | TK-004 | Create and update Party Tracker records with concise at-table view | ready | S-004, S-005 | pending |
@@ -66,9 +66,22 @@ remain searchable, and distinguish historical notes from current party state.
 | TK-006 | Add per-player Inspiration/Fate/Clarity controls with persistence and rollback | ready | TK-004 | pending |
 | TK-007 | Prove session search, party state, and currency controls in one responsive synthetic flow | ready | TK-003, TK-005, TK-006 | pending |
 
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-001 | Session CRUD persists number/date/content/freeform tags and lists newest sessions first after reload. | API/DB validation tests, tag round-trip, newest-first ordering fixture, and persist-reload browser trace. |
+| TK-002 | FTS returns accurate bounded/ranked snippets for content and handles no-result/invalid queries. | FTS fixture tests for match/rank/snippet/limit/no-result/injection cases. |
+| TK-003 | Session writes refresh recent-session context with correct source/freshness and no canonical duplication. | Fixed-clock write/invalidation test, context diff, provenance fields, and no-extra-write assertion. |
+| TK-004 | Party CRUD/inline editing persists settled fields with clear loading/empty/error states. | API/DB/client tests, inline persist-reload trace, and responsive table screenshot. |
+| TK-005 | Party-character links use stable IDs and never copy backend-derived rules values as party truth. | Link/rename/missing-character fixtures and schema/response assertion excluding derived duplicates. |
+| TK-006 | Inspiration/Fate/Clarity increments/decrements persist within bounds or visibly roll back on failure. | Boundary/transaction/API tests, simulated failure rollback, and no-refresh UI trace. |
+| TK-007 | One responsive synthetic flow records/tags/searches a session, edits party state, and adjusts currency without leaking DM-only notes. | Browser E2E, viewport screenshots, privacy projection scan, console/network log, and full suite. |
+
 ## Acceptance Criteria
 
 - [ ] Session records persist and FTS returns accurate bounded results.
+- [ ] Session Log persists freeform tags and lists newest sessions first.
 - [ ] Party state is fast to read/update and links safely to characters.
 - [ ] Currency changes persist immediately or roll back visibly.
 - [ ] DM-only notes do not appear in player projections.
@@ -94,6 +107,7 @@ remain searchable, and distinguish historical notes from current party state.
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | canon harvest | Consolidated three tightly linked live-session capabilities | Archived schema, queries, and acceptance notes inspected | S-008 created | All seven slices remain |
+| 2026-07-17 | Planner remediation | Restored freeform Session Log tags/newest-first ordering and added explicit done/proof contracts to all session/party slices | Archived Phase 1 canon, 27-row matrix, seven contract rows, blocker audit, render, and doctor checked | S-008 and Blueprint updated | Seven implementation slices remain |
 
 ## Completion Result
 

@@ -8,7 +8,7 @@
 **Owner:** Kayden (rules decision); Character Rules Engineer
 **Updated:** 2026-07-17
 **Catalog description:** Extend the shipped level-up flow with one explicit, validated feat/ASI rules contract across API, compendium, creator, and sheet.
-**Blockers:** owner rules-baseline decision
+**Blockers:** none
 **Latest event:** Current progression was captured as implemented; feat/ASI remains blocked on one explicit product/rules contract rather than generic scoping.
 **Next gate:** Kayden selects the named rules baseline and deliberate exceptions, then TK-002 becomes ready.
 
@@ -58,19 +58,33 @@ diverge API/data/UI.
 
 ## Dependencies And Blockers
 
-- Owner gate: choose 2014 5e, 2024 5e, or an explicitly documented hybrid and
-  identify deliberate exceptions. This materially changes product behavior,
-  data migration, and public API validation.
+- TK-002 is owner-blocked through the explicit gate below. Lifecycle blocker
+  fields contain only supported spec/ticket IDs or `none`.
 
 ## Vertical Implementation Slices
 
 | Ticket | Slice | Status | Blockers | Proof |
 |---|---|---|---|---|
 | TK-001 | Preserve current level/subclass/spell progression through level 20 | done | none | API/client progression tests pass in 132/372 baselines |
-| TK-002 | Record the selected ASI/feat levels, class exceptions, prerequisites, mutation, and grant contract | blocked | owner rules-baseline decision | pending |
+| TK-002 | Record the selected ASI/feat levels, class exceptions, prerequisites, mutation, and grant contract | blocked | none | pending |
 | TK-003 | Enforce ASI/feat eligibility, prerequisites, score bounds, and grants in API derivation | blocked | TK-002 | pending |
 | TK-004 | Add migration-safe persistence and compendium support for existing/new characters | blocked | TK-003 | pending |
 | TK-005 | Add creation/level-up/sheet choices and end-to-end rules proof | blocked | TK-004 | pending |
+
+## Owner Gate
+
+| Ticket | Decision | Options | Recommendation | Cost / impact | Owner | Resolution effect |
+|---|---|---|---|---|---|---|
+| TK-002 | Select the feat/ASI rules baseline and deliberate exceptions | 2014 5e / 2024 5e / explicit hybrid | Choose one named baseline and document only deliberate exceptions | Changes progression timing, prerequisites, data shape, migration, and client choices | Kayden | Record the choice in append-only evidence, then change TK-002 from blocked to ready |
+
+## Ticket Done Contracts
+
+| Ticket | Done criteria | Required proof |
+|---|---|---|
+| TK-002 | Kayden's named baseline and deliberate exceptions define ASI/feat levels, class exceptions, prerequisites, ability mutation, and tool/language grants without ambiguity. | Owner-decision evidence, complete rules table/examples, contradiction scan against seeds/docs, and lifecycle transition to ready. |
+| TK-003 | API derivation/validation enforces the approved timing, prerequisites, score bounds, and structured grants. | Red/green table-driven unit/API tests covering ordinary, Fighter/Rogue exception, invalid prerequisite, and score-bound cases. |
+| TK-004 | Existing/new characters persist approved feat/ASI choices through a reversible migration with valid compendium references. | Migration up/down or rollback tests, existing-character fixture comparison, compendium link checks, and backup proof. |
+| TK-005 | Creator/level-up/sheet expose only valid choices, explain blocked choices, and render backend-derived results. | Client tests, API integration, browser ordinary/Fighter/Rogue flows, build, and no-frontend-math scan. |
 
 ## Acceptance Criteria
 
@@ -103,6 +117,7 @@ cd ../dndclient && npm test -- --run && npm run build
 | Date | Ticket | Event | Verification | Docs | Remaining gap |
 |---|---|---|---|---|---|
 | 2026-07-17 | TK-001 | Captured shipped progression and isolated the genuine owner rules gate | API 132/132 and client 372/372/build green; plans/source/tests compared | S-015 and Taskboard owner decision created | Kayden must choose the rules baseline before TK-002 |
+| 2026-07-17 | Planner remediation | Replaced unsupported prose blocker text with blocked-ticket plus explicit owner-gate semantics and added done/proof contracts to every unfinished slice | Owner-gate table, supported blocker-ID audit, four contract rows, render, and doctor checked | S-015 and Taskboard updated | Kayden's baseline choice keeps TK-002 owner-blocked |
 
 ## Completion Result
 
