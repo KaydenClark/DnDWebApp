@@ -9,8 +9,8 @@
 **Updated:** 2026-07-17
 **Catalog description:** Consolidate the product under DnDWebApp without losing, rewriting, deleting, or silently disconnecting the dndAPI and dndclient histories/remotes.
 **Blockers:** none
-**Latest event:** TK-001 exact-head Auditor findings were remediated with focused red/green coverage and full verification.
-**Next gate:** Push the remediation checkpoint and rerun the exact-head Auditor before closing TK-001.
+**Latest event:** TK-001 closed with proof.
+**Next gate:** Complete TK-002.
 
 ## Outcome
 
@@ -65,7 +65,7 @@ history or make the root remote falsely appear complete.
 
 | Ticket | Slice | Status | Blockers | Proof |
 |---|---|---|---|---|
-| TK-001 | Add a deterministic three-repo provenance manifest and read-only verifier | in-progress | none | pending |
+| TK-001 | Add a deterministic three-repo provenance manifest and read-only verifier | done | none | Exact-head Auditor green at 21d5d5650ea12d78b6d6bc686f2eb3d5a953a878; provenance verifier 6/6; live remote refs 3/3; API 132/132; client 372/372; Vite build green; git fsck 3/3 exit 0; before/after repository-state SHA-256 both 15d0f143cc7bfa22770c7447f32f8769317882fc26cef5c27f046bbb0ed04e0b. |
 | TK-002 | Rehearse the chosen history-preserving import in a disposable clone/worktree | ready | TK-001 | pending |
 | TK-003 | Integrate API/client trees on an isolated owner branch with full history reachability | ready | TK-002 | pending |
 | TK-004 | Prove build/test/recovery and all original remotes unchanged after integration | ready | TK-003 | pending |
@@ -114,6 +114,7 @@ git ls-remote origin
 | 2026-07-17 | Planner remediation | Normalized every open consolidation slice to explicit done criteria and required proof | Four ticket rows matched four done-contract rows; blocker syntax, render, and doctor checked | S-003 updated | TK-001 remains the smallest safe Engineer ticket |
 | 2026-07-17 | TK-001 checkpoint | Added the deterministic three-repository manifest, fail-closed read-only verifier, and synthetic mismatch regression | Red: verifier module missing; green: verifier tests 2/2, live manifest 3/3, before/after repository-state SHA-256 both `7f25fb132f7dfecc35e9f3da1f3b23a66e644f504fed41fd89f9f049e013f12c`; API 132/132; client 372/372; Vite build green | Runbook documents manifest, live verification, regression command, and provenance-drift rule | Exact-head Auditor review and ticket close remain |
 | 2026-07-17 | TK-001 Auditor remediation | Made symlinked CLI execution fail closed, required exact real Git roots, rejected duplicate/nested import destinations, used a locally reachable remote-mismatch fixture, cleaned fixtures with `t.after`, and restored the stable proof contract | Red: symlink, subdirectory, and duplicate-destination tests failed; green: verifier 6/6 and live manifest 3/3; reproducible before/after state SHA-256 both `09892db97065794ebacf40dcd580e9a58db9e6259300ddbdda0237b9c5c142c9`; API 132/132; client 372/372; Vite build green | Runbook records the reproducible evidence-hash command; S-003 required-proof contract restored | Exact-head re-audit and ticket close remain |
+| 2026-07-17 | TK-001 | Ticket closed | Exact-head Auditor green at 21d5d5650ea12d78b6d6bc686f2eb3d5a953a878; provenance verifier 6/6; live remote refs 3/3; API 132/132; client 372/372; Vite build green; git fsck 3/3 exit 0; before/after repository-state SHA-256 both 15d0f143cc7bfa22770c7447f32f8769317882fc26cef5c27f046bbb0ed04e0b. | RUNBOOK.md documents manifest verification, regression suite, reproducible state-hash proof, and provenance-drift handling; S-003 evidence records implementation, remediation, and audit proof. | S-003 TK-002 through TK-004 remain; S-005 private-source authorization and S-015 feat/ASI rules baseline remain owner-gated. |
 
 ## Completion Result
 
